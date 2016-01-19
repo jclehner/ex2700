@@ -41,5 +41,4 @@ echo
 echo -n "Press enter to continue, or Ctrl-C to abort. "
 read answer
 
-echo "Flashimg image. No turning back now!"
-mtd write -r /tmp/firmware.bin firmware
+sysupgrade -n firmware.bin
