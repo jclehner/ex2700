@@ -64,7 +64,7 @@ root@EX2700:/tmp# cd ex2700
 ## Unlocking the bootloader
 
 **!! WARNING !! Modifying the bootloader environment is dangerous, and has
-the potential of bricking[1](#fn1) your device! Proceed with extreme caution!**
+the potential of bricking<sup>[1](#fn1)</sup> your device! Proceed with extreme caution!**
 
 First, print the current value of `bootcmd`. If the output is not exactly
 as displayed, do **NOT** proceed!
@@ -76,8 +76,8 @@ bootcmd=nmrp; nor_two_part_fw_integrity_check 0xbc040000; bootm 0xbc040000
 
 The problematic part here is `nor_two_part_fw_integrity_check 0xbc040000`,
 which performs additional integrity checks, which our vanilla OpenWrt will
-not pass[2](#fn2). The "u-boot-env" partition is normally locked, meaning 
-you cannot modify any of these values:
+not pass<sup>[2](#fn2)</sup>. The "u-boot-env" partition is normally locked, 
+meaning you cannot modify any of these values:
 
 ````
 root@EX2700:/tmp/ex2700# ./fw_setenv bootcmd "nmrp; bootm 0xbc040000"
@@ -118,7 +118,7 @@ root@EX2700:/tmp/# reboot
 ````
 ------------------------------------------------------------
 <a name="fn1">1</a>: In most cases, you'll be able to unbrick your device using
-a serial console, to directly access the bootloader.
+a serial console.
 
 <a name="fn2">2</a>: It is not impossible to create an image that can be flashed
 via the router's stock web interface, but the kernel in that case is constrained
