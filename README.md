@@ -120,7 +120,8 @@ root@EX2700:/tmp/# reboot
 <a name="fn1">1</a>: In most cases, you'll be able to unbrick your device using
 a serial console.
 
-<a name="fn2">2</a>: It is not impossible to create an image that can be flashed
-via the router's stock web interface, but the kernel in that case is constrained
-to 982976 bytes (960 kilobytes, minus 64 bytes), because `u-boot` expects a
-uImage header for the rootfs partition at this offset.
+<a name="fn2">2</a>: It is entirely possible to create an image that can be flashed
+via the router's stock web interface, and which passes the bootloader's integrity
+checks, but the kernel in that case is constrained to 982976 bytes (960 kilobytes, 
+minus 64 bytes), because the bootloader (u-boot) expects a uImage header in the last
+64 bytes of the stock "kernel" mtd partition.

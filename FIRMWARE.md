@@ -18,8 +18,8 @@ mtd9: 00370000 00010000 "firmware"
 
 The most recent firmware (v1.0.1.8) can be downloaded here:
 
-ftp://updates1.netgear.com/ex2700/ww/EX2700-V1.0.1.8.img
-ftp://updates1.netgear.com/ex2700/ww/EX2700-V1.0.0.43Eng-Language-table
+* ftp://updates1.netgear.com/ex2700/ww/EX2700-V1.0.1.8.img
+* ftp://updates1.netgear.com/ex2700/ww/EX2700-V1.0.0.43Eng-Language-table
 
 ### /dev/mtd5 (language)
 
@@ -40,12 +40,13 @@ struct hdr_config {
 	uint16_t len; // length of configuration data (file length - 7)
 	uint16_t zero; // always zero
 	uint32_t unknown; // checksum maybe?
+}
 ````
 
 ### /dev/mtd7 (art)
 
 Stores data such as mac addresses, hardware id, etc. Some of these entries can
-be set via `artmtd`. Starting at offset `0x1500` is the EEPROM data for the WiFi
+be set via `artmtd`. Starting at offset `0x1000` is the EEPROM data for the WiFi
 adapter. Some intersting offsets:
 
 * `0x00`: LAN MAC address
