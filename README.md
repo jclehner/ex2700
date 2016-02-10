@@ -59,7 +59,7 @@ The `wget` utility on this device is broken, so we'll have to use `tftp`.
 root@EX2700:/# cd /tmp
 root@EX2700:/tmp# tftp -g -r openwrt-ramips-mt7620-ex2700-squashfs-sysupgrade.bin 192.168.2.1
 root@EX2700:/tmp# tftp -g -r ex2700.tar.gz 192.168.2.1
-root@EX2700:/tmp#  # tar -xzf ex2700.tar.gz
+root@EX2700:/tmp# tar -xzf ex2700.tar.gz
 root@EX2700:/tmp# cd ex2700
 ````
 
