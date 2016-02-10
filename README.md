@@ -69,7 +69,7 @@ root@EX2700:/# config commit
 ## Downloading neccessary files
 
 The `wget` command does not support HTTPS, so you'll need to host the
-[ex2700.tar.gz](https://github.com/jclehner/ex2700/blob/master/ex2700.tar.gz)
+[ex2700.tar.gz](https://github.com/jclehner/ex2700/raw/master/ex2700.tar.gz)
 file somewhere else. You could either setup a simple file server on your 
 computer, or use online services such as [dropcanvas](http://dropcanvas.com).
 
