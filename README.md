@@ -20,6 +20,9 @@ used [NetgearTelnetEnable](https://github.com/insanid/NetgearTelnetEnable)
 (binaries for Linux and Windows available 
 [here](https://github.com/insanid/NetgearTelnetEnable/tree/master/binaries)).
 
+`001122AABBCC` is the router's MAC address. `admin` and `password` are should
+be set to the username and password of the router's web interface.
+
 ````
 $ ./telnetenable 192.168.1.1 001122AABBCC admin password
 $ telnet 192.168.1.1
@@ -50,8 +53,7 @@ root@EX2700:/#
 
 ## Download neccessary files
 
-The `wget` utility on this device is broken, so our only option of receiving
-files is `tftp`.
+The `wget` utility on this device is broken, so we'll have to use `tftp`.
 
 ````
 root@EX2700:/# cd /tmp
