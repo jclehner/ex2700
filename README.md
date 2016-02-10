@@ -52,7 +52,7 @@ root@EX2700:/#
 ###### Permanently enable telnet in the stock firmware
 
 ```
-root@EX2700:/# config set enable_telnet
+root@EX2700:/# config set enable_telnet=1
 root@EX2700:/# config set GUI_Region=English
 root@EX2700:/# config commit
 ```
@@ -107,8 +107,8 @@ Can't open /dev/mtd1: Permission denied
 Error: can't write fw_env to flash
 ```
 
-To overcome this, we'll use a kernel module which will unlock all locked mtd
-partitions ([source](mtd-unlocker.c)).
+To overcome this, we'll use a kernel module to unlock all MTD partitions
+([source](mtd-unlocker.c)).
 
 ```
 root@EX2700:/tmp/ex2700# insmod mtd-unlocker.ko
