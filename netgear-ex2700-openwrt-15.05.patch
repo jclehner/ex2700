@@ -28,7 +28,7 @@ index d7d016b..a78912d 100755
  		ucidef_add_switch "switch0" "1" "1"
  		ucidef_add_switch_vlan "switch0" "1" "4 6t"
 diff --git a/target/linux/ramips/base-files/etc/diag.sh b/target/linux/ramips/base-files/etc/diag.sh
-index a7e2501..3baa887 100644
+index a7e2501..6474ebd 100644
 --- a/target/linux/ramips/base-files/etc/diag.sh
 +++ b/target/linux/ramips/base-files/etc/diag.sh
 @@ -63,6 +63,9 @@ get_status_led() {
@@ -36,7 +36,7 @@ index a7e2501..3baa887 100644
  		status_led="esr-9753:orange:power"
  		;;
 +	ex2700)
-+		status_led="netgear:red:power"
++		status_led="ex2700:red:power"
 +		;;
  	f5d8235-v2)
  		status_led="f5d8235v2:blue:router"
@@ -72,23 +72,33 @@ index 4141ddd..8dc05b0 100755
  		name="bc2"
  		;;
 diff --git a/target/linux/ramips/base-files/lib/upgrade/platform.sh b/target/linux/ramips/base-files/lib/upgrade/platform.sh
-index 2f64d8c..11746b9 100755
+index 2f64d8c..a3d0175 100755
 --- a/target/linux/ramips/base-files/lib/upgrade/platform.sh
 +++ b/target/linux/ramips/base-files/lib/upgrade/platform.sh
-@@ -128,6 +128,7 @@ platform_check_image() {
- 	y1s |\
- 	zbt-wa05 |\
- 	zbt-wg2626 |\
+@@ -49,6 +49,7 @@ platform_check_image() {
+ 	dir-620-d1 | \
+ 	dir-810l | \
+ 	e1700 | \
 +	ex2700 |\
- 	zte-q7)
- 		[ "$magic" != "27051956" ] && {
- 			echo "Invalid image type."
+ 	esr-9753 | \
+ 	f7c027 | \
+ 	fonera20n | \
 diff --git a/target/linux/ramips/dts/EX2700.dts b/target/linux/ramips/dts/EX2700.dts
 new file mode 100644
-index 0000000..6fa0b1f
+index 0000000..da98bd8
 --- /dev/null
 +++ b/target/linux/ramips/dts/EX2700.dts
-@@ -0,0 +1,138 @@
+@@ -0,0 +1,148 @@
++/*
++ * Device Tree file for the Netgear EX2700
++ *
++ * Copyright (C) 2016 Joseph C. Lehner <joseph.c.lehner@gmail.com>
++ *
++ * This file is licensed under the terms of the GNU General Public
++ * License version 2.  This program is licensed "as is" without any
++ * warranty of any kind, whether express or implied.
++ */
++
 +/dts-v1/;
 +
 +/include/ "mt7620a.dtsi"
@@ -172,38 +182,38 @@ index 0000000..6fa0b1f
 +		compatible = "gpio-leds";
 +
 +		power_g {
-+			label = "netgear:green:power";
++			label = "ex2700:green:power";
 +			gpios = <&gpio0 9 1>;
 +			default-state = "on";
 +		};
 +
 +		power_r {
-+			label = "netgear:red:power";
++			label = "ex2700:red:power";
 +			gpios = <&gpio0 11 1>;
 +		};
 +
 +		device_g {
-+			label = "netgear:green:device";
++			label = "ex2700:green:device";
 +			gpios = <&gpio0 13 1>;
 +		};
 +
 +		device_r {
-+			label = "netgear:red:device";
++			label = "ex2700:red:device";
 +			gpios = <&gpio0 10 1>;
 +		};
 +
 +		router_g {
-+			label = "netgear:green:router";
++			label = "ex2700:green:router";
 +			gpios = <&gpio0 12 1>;
 +		};
 +
 +		router_r {
-+			label = "netgear:red:router";
++			label = "ex2700:red:router";
 +			gpios = <&gpio0 14 1>;
 +		};
 +
 +		wps {
-+			label = "netgear:green:wps";
++			label = "ex2700:green:wps";
 +			gpios = <&gpio1 15 1>;
 +		};
 +	};
@@ -228,28 +238,28 @@ index 0000000..6fa0b1f
 +	};
 +};
 diff --git a/target/linux/ramips/image/Makefile b/target/linux/ramips/image/Makefile
-index 0dd46ca..b97f3a4 100644
+index 0dd46ca..3edf6ff 100644
 --- a/target/linux/ramips/image/Makefile
 +++ b/target/linux/ramips/image/Makefile
-@@ -888,6 +888,7 @@ Image/Build/Profile/ZBT-WA05=$(call BuildFirmware/Default8M/$(1),$(1),zbt-wa05,Z
- Image/Build/Profile/ArcherC20i=$(call BuildFirmware/Tplink/$(1),$(1),ArcherC20i,ArcherC20i)
- microwrt_mtd_size=16515072
- Image/Build/Profile/MicroWRT=$(call BuildFirmware/CustomFlash/$(1),$(1),microwrt,MicroWRT,$(microwrt_mtd_size))
+@@ -855,6 +855,7 @@ endif
+ #
+ 
+ Image/Build/Profile/E1700=$(call BuildFirmware/UMedia/$(1),$(1),e1700,E1700,0x013326)
 +Image/Build/Profile/EX2700=$(call BuildFirmware/Default4M/$(1),$(1),ex2700,EX2700)
- 
- 
+ Image/Build/Profile/MT7620a=$(call BuildFirmware/Default8M/$(1),$(1),mt7620a,MT7620a)
+ Image/Build/Profile/MT7620a_MT7610e=$(call BuildFirmware/Default8M/$(1),$(1),mt7620a_mt7610e,MT7620a_MT7610e)
+ Image/Build/Profile/MT7620a_MT7530=$(call BuildFirmware/Default8M/$(1),$(1),mt7620a_mt7530,MT7620a_MT7530)
+@@ -893,6 +894,7 @@ Image/Build/Profile/MicroWRT=$(call BuildFirmware/CustomFlash/$(1),$(1),microwrt
  ifeq ($(SUBTARGET),mt7620)
-@@ -920,6 +921,7 @@ define Image/Build/Profile/Default
- 	$(call Image/Build/Profile/ZBT-WA05,$(1))
- 	$(call Image/Build/Profile/ArcherC20i,$(1))
- 	$(call Image/Build/Profile/MicroWRT,$(1))
+ define Image/Build/Profile/Default
+ 	$(call Image/Build/Profile/E1700,$(1))
 +	$(call Image/Build/Profile/EX2700,$(1))
- endef
- endif
- 
+ 	$(call Image/Build/Profile/MT7620a,$(1))
+ 	$(call Image/Build/Profile/MT7620a_MT7610e,$(1))
+ 	$(call Image/Build/Profile/MT7620a_MT7530,$(1))
 diff --git a/target/linux/ramips/mt7620/profiles/netgear.mk b/target/linux/ramips/mt7620/profiles/netgear.mk
 new file mode 100644
-index 0000000..590756a
+index 0000000..d1b073a
 --- /dev/null
 +++ b/target/linux/ramips/mt7620/profiles/netgear.mk
 @@ -0,0 +1,16 @@
@@ -261,11 +271,11 @@ index 0000000..590756a
 +#
 +
 +define Profile/EX2700
-+ NAME:=Netgear EX2700
-+ PACKAGES:=-kmod-usb-core -kmod-usb2 -kmod-usb-ohci -kmod-ledtrig-usbdev
++	NAME:=Netgear EX2700
++	PACKAGES:=-kmod-usb-core -kmod-usb2 -kmod-usb-ohci -kmod-ledtrig-usbdev
 +endef
 +
 +define Profile/EX2700/Description
-+ Support for Netgear EX2700
++	Support for Netgear EX2700
 +endef
 +$(eval $(call Profile,EX2700))
