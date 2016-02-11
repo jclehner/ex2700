@@ -1,6 +1,9 @@
 Netgear EX2700 OpenWrt flash procedure
 ======================================
 
+**For up-to-date information, refer to the OpenWRT wiki entry ([link](https://wiki.openwrt.org/toh/netgear/netgear_ex2700)).**
+
+
 First, using the web interface, update your EX2700 to the latest firmware
 (version 1.0.1.8 as of 2016-01-17) - older versions *may* work though.
 
