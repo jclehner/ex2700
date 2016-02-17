@@ -5,7 +5,7 @@ Netgear EX2700 OpenWrt flash procedure
 
 **The information posted below is not relevant anymore**, as the new images can be
 flashed from the router's stock interface. Prebuilt images are available
-[here](https://github.com/jclehner/ex2700/dl/15.05). The `minimal` images
+[here](https://github.com/jclehner/ex2700/tree/master/dl/15.05). The `minimal` images
 come without a web interface, the `luci` images are shipped with a web interface,
 plus `relayd` and `igmpproxy`, for building a WiFi-extender.
 
