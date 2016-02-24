@@ -1,0 +1,25 @@
+CONFIG_TARGET_ramips=y
+CONFIG_TARGET_ramips_mt7620=y
+CONFIG_TARGET_ramips_mt7620_EX2700=y
+CONFIG_PACKAGE_igmpproxy=y
+CONFIG_PACKAGE_libiwinfo-lua=y
+CONFIG_PACKAGE_liblua=y
+CONFIG_PACKAGE_libubus-lua=y
+CONFIG_PACKAGE_libuci-lua=y
+CONFIG_PACKAGE_lua=y
+CONFIG_PACKAGE_luci=y
+CONFIG_PACKAGE_luci-app-firewall=y
+CONFIG_PACKAGE_luci-base=y
+CONFIG_PACKAGE_luci-lib-ip=y
+CONFIG_PACKAGE_luci-lib-nixio=y
+CONFIG_PACKAGE_luci-mod-admin-full=y
+CONFIG_PACKAGE_luci-proto-ipv6=y
+CONFIG_PACKAGE_luci-proto-ppp=y
+CONFIG_PACKAGE_luci-proto-relay=y
+CONFIG_PACKAGE_luci-theme-bootstrap=y
+CONFIG_PACKAGE_relayd=y
+CONFIG_PACKAGE_rpcd=y
+CONFIG_PACKAGE_uhttpd=y
+CONFIG_PACKAGE_uhttpd-mod-ubus=y
+# CONFIG_WPA_SUPPLICANT_INTERNAL is not set
+# CONFIG_WPA_SUPPLICANT_OPENSSL is not set
