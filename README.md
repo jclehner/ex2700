@@ -128,39 +128,27 @@ root@EX2700:/tmp# cd ex2700
 **!! WARNING !! Modifying the bootloader environment is dangerous, and has
 the potential of bricking<sup>[1](#fn1)</sup> your device! Proceed with extreme caution!**
 
-First, print the current value of `bootcmd`. If the output is not exactly
-as displayed, do **NOT** proceed!
+First, we'll make a backup of the bootloader environment partition (be
+careful not to overwrite `/tmp/ex2700/u-boot-env.bin` when using a different name for
+the backup file).
 
 ```
-root@EX2700:/tmp/ex2700# ./fw_printenv bootcmd
-bootcmd=nmrp; nor_two_part_fw_integrity_check 0xbc040000; bootm 0xbc040000
+root@EX2700:/tmp/ex2700# dd if=/dev/mtd1 of=/tmp/u-boot-env.bak
+128+0 records in
+128+0 records out
 ```
 
-The problematic part here is `nor_two_part_fw_integrity_check 0xbc040000`,
-which performs additional integrity checks, which our vanilla OpenWrt will
-not pass<sup>[2](#fn2)</sup>. The "u-boot-env" partition is normally locked, 
-meaning you cannot modify any of these values:
+Then, update the bootloader environment:
 
 ```
-root@EX2700:/tmp/ex2700# ./fw_setenv bootcmd "nmrp; bootm 0xbc040000"
-Can't open /dev/mtd1: Permission denied
-Error: can't write fw_env to flash
+root@EX2700:/tmp/ex2700# insmod mtd-rw.ko i_want_a_brick=1
+root@EX2700:/tmp/ex2700# mtd write u-boot-env.bin u-boot-env
+Unlocking u-boot-env ...
+Writing from u-boot-env.bin to u-boot-env ... [w]
 ```
 
-To overcome this, we'll use a kernel module to unlock all MTD partitions
-([source](mtd-unlocker.c)).
-
-```
-root@EX2700:/tmp/ex2700# insmod mtd-unlocker.ko
-root@EX2700:/tmp/ex2700# ./fw_setenv bootcmd "nmrp; bootm 0xbc040000"
-```
-
-Now verify that the value is correct.
-
-```
-root@EX2700:/tmp/ex2700# ./fw_printenv bootcmd 
-bootcmd=nmrp; bootm 0xbc040000
-```
+Optional: you can use `./fw_printenv` and `./fw_setenv` to adjust
+the bootloader environment.
 
 ## Flashing OpenWrt
 
