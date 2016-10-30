@@ -21,8 +21,8 @@ fi
 
 cd /tmp
 rm -f firmware.bin language.bin
-wget -O - ftp://updates1.netgear.com/ex2700/ww/EX2700-V1.0.1.8.img | tail -c+129 > firmware.bin || exit 1
-wget -O language.bin ftp://updates1.netgear.com/ex2700/ww/EX2700-V1.0.0.43Eng-Language-table || exit 1
+wget -O - ftp://downloads.netgear.com/ex2700/ww/EX2700-V1.0.1.10.img | tail -c+129 > firmware.bin || exit 1
+wget -O language.bin ftp://downloads.netgear.com/ex2700/ww/EX2700-V1.0.0.43Eng-Language-table || exit 1
 
 pad_kb firmware.bin 3520
 pad_kb language.bin 128
