@@ -5,7 +5,6 @@ Netgear EX2700 OpenWrt flash procedure
 
 **For up-to-date information, refer to the [OpenWRT wiki entry](https://wiki.openwrt.org/toh/netgear/netgear_ex2700).**
 
-
 **The information posted below is not relevant anymore and should be ignored**, as the new images can be
 flashed from the router's stock interface. 
 
