@@ -1,13 +1,13 @@
 Netgear EX2700 OpenWrt flash procedure
 ======================================
 
-**For up-to-date information, refer to the OpenWRT wiki entry ([link](https://wiki.openwrt.org/toh/netgear/netgear_ex2700)).**
+**For up-to-date images, use official [OpenWRT](https://downloads.openwrt.org/snapshots/trunk/ramips/mt7620/openwrt-ramips-mt7620-ex2700-squashfs-factory.bin) / [LEDE](https://downloads.lede-project.org/snapshots/targets/ramips/mt7620/lede-ramips-mt7620-ex2700-squashfs-factory.bin) images**
+
+**For up-to-date information, refer to the [OpenWRT wiki entry](https://wiki.openwrt.org/toh/netgear/netgear_ex2700).**
+
 
 **The information posted below is not relevant anymore and should be ignored**, as the new images can be
-flashed from the router's stock interface. Prebuilt images are available
-[here](https://github.com/jclehner/ex2700/tree/master/dl/15.05). The `minimal` images
-come without a web interface, the `luci` images are shipped with a web interface,
-plus `relayd` and `igmpproxy`, for building a WiFi-extender.
+flashed from the router's stock interface. 
 
 ----------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------
